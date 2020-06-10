@@ -1,0 +1,90 @@
+import Layout from 'lib/components/layout'
+import { Note, Link, Code, Spacer, Tabs, Row, Dot, Display, Snippet } from 'components'
+
+export const meta = {
+  title: 'installation',
+  group: 'getting-started',
+  index: 10,
+}
+
+## Installation
+
+### Install package
+
+<Note>
+Ensure your have the latest version of <Link href="https://nodejs.org/en/download/">NodeJS</Link>,
+and a package manager: <Link href="https://www.npmjs.com/">NPM</Link> or <Link href="https://yarnpkg.com/">Yarn</Link>.
+</Note>
+<Spacer y={1} />
+<Dot type="success" /> 1. Run script to download:
+<Spacer y={.8} />
+<Tabs initialValue="yarn" style={{ width: '90%', margin: '0 auto' }}>
+  <Tabs.Item label={<span><Spacer x={.3} inline />Yarn<Spacer x={.3} inline /></span>} value="yarn">
+    <Spacer y={.6} />
+    <Snippet width="400px">yarn add @zeit-ui/react</Snippet>
+  </Tabs.Item>
+  <Tabs.Item label={<span><Spacer x={.3} inline />Npm<Spacer x={.3} inline /></span>} value="npm">
+    <Spacer y={.6} />
+    <Snippet width="400px">npm i @zeit-ui/react</Snippet>
+  </Tabs.Item>
+</Tabs>
+<Spacer y={1.5} />
+<Dot type="success" /> 2. Import package to React project:
+
+<Display width="90%">
+
+```jsx
+import { ZeitProvider, CssBaseline } from '@zeit-ui/react'
+
+const Application = () => (
+  <ZeitProvider>      // ---> Base provider
+    <CssBaseline />     // ---> normalize styles
+    <AppComponent />    // ---> Your App Component
+  </ZeitProvider>
+)
+```
+
+</Display>
+
+<Spacer y={1.5} />
+<Dot type="success" /> 3. Use Components in any where:
+
+<Display width="90%">
+
+```jsx
+import { Button } from '@zeit-ui/react'
+
+const MyComponent = () => <Button>Click Me</Button>
+```
+
+</Display>
+
+<Spacer y={3} />
+
+### Import a component
+
+`@zeit-ui/react` supports import components when you actually need. e.g.:
+
+<Display width="90%">
+
+```jsx
+import { Button } from '@zeit-ui/react/components/button'
+
+const MyComponent = () => <Button>Click Me</Button>
+```
+
+</Display>
+
+<Spacer y={3} />
+
+### Create React App
+
+A React project created by <Link color target="_blank" rel="nofollow" href="https://github.com/facebook/create-react-app">create-react-app</Link> can
+also easily use `@zeit-ui/react`. You don't need to make any changes, just install and use.
+
+We have <Link target="_blank" color rel="nofollow" href="https://github.com/zeit-ui/react-getting-started">a
+sample project related to create react app here</Link>.
+
+
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

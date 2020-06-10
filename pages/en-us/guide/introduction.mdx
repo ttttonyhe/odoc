@@ -1,0 +1,36 @@
+import Layout from 'lib/components/layout'
+import { Code, Link, Text, Spacer, Note } from 'components'
+
+export const meta = {
+  title: 'introduction',
+  group: 'getting-started',
+  index: 5,
+}
+
+## Introduction
+
+### Why @zeit-ui/react
+
+`@zeit-ui/react` is a React implementation for <Link rel="nofollow" target="_blank" href="https://github.com/zeit-ui/zeit-style">styles</Link>
+originating from <Link rel="nofollow" target="_blank" href="https://vercel.co/design">Vercel's design</Link>.
+
+The design of the **Vercel** is concise and aesthetic feeling, this is an important reason for popular of Vercel.
+Now you can use them at will in React.
+
+ZEIT UI is an unofficial organization, all our projects are open source.
+
+<Spacer y={3} />
+
+### Contact
+
+- <Link color target="_blank" rel="nofollow" href="https://spectrum.chat/zeit-ui/general?tab=posts">Chat on Spectrum</Link>
+- <Link color target="_blank" rel="nofollow" href="https://github.com/zeit-ui/react/issues/new">Report an issue</Link>
+- Welcome share your feedback and ideas. We also love PRs.
+
+<Spacer y={3} />
+
+### License
+
+Licensed under the [MIT LICENSE](https://github.com/zeit-ui/react/blob/master/LICENSE).
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

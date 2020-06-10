@@ -1,0 +1,168 @@
+import { Layout, Playground, Attributes } from 'lib/components'
+import { Card, Spacer, Row, Col, Link, Image, Text, Divider, Code } from 'components'
+
+export const meta = {
+  title: 'card',
+  group: 'Surfaces',
+}
+
+## Card
+
+A common container component.
+
+<Playground
+  title="Basic"
+  scope={{ Card }}
+  code={`
+<Card>
+  <p>A basic card.</p>
+</Card>
+`} />
+
+<Playground
+  title="Hoverable"
+  scope={{ Card }}
+  code={`
+<Card hoverable>
+  <p>hoverable card.</p>
+</Card>
+`} />
+
+<Playground
+  title="Shadow"
+  scope={{ Card }}
+  code={`
+<Card shadow>
+  <h4>The Evil Rabbit</h4>
+  <p>shadow card.</p>
+</Card>
+`} />
+
+<Playground
+  title="Types"
+  desc="Show different states with colors."
+  scope={{ Card, Spacer, Row, Col }}
+  code={`
+() => {
+  const typeLeft = ['secondary', 'success', 'warning', 'error', 'dark']
+  const typeRight = ['alert', 'purple', 'violet', 'cyan', 'lite']
+  return (
+    <>
+      {typeLeft.map((left, index) => (
+        <Row justify="space-around" key={left} style={{ marginBottom: '18px' }}>
+          <Col span="10">
+            <Card type={left}>
+              <h4 style={{ textTransform: 'capitalize' }}>{left}</h4>
+              <span>{left}</span>
+            </Card>
+          </Col>
+          <Col span="10">
+            <Card type={typeRight[index]}>
+              <h4 style={{ textTransform: 'capitalize' }}>{typeRight[index]}</h4>
+              <span>{typeRight[index]}</span>
+            </Card>
+          </Col>
+        </Row>
+      ))}
+    </>
+  )
+}
+`} />
+
+<Playground
+  title="With Footer"
+  scope={{ Card, Link, Spacer, Row }}
+  code={`
+<Row style={{ flexWrap: 'wrap' }} justify="space-around">
+  <Card width="330px">
+    <h4>ZEIT UI React</h4>
+    <p>Modern and minimalist React UI library.</p>
+    <Card.Footer>
+      <Link color target="_blank" href="https://github.com/zeit-ui/react">Visit source code on GitHub.</Link>
+    </Card.Footer>
+  </Card>
+  <Card width="330px" type="dark">
+    <h4>ZEIT UI React</h4>
+    <p>Modern and minimalist React UI library.</p>
+    <Card.Footer>
+      <Link target="_blank" href="https://github.com/zeit-ui/react">Visit source code on GitHub.</Link>
+    </Card.Footer>
+  </Card>
+</Row>
+`} />
+
+<Playground
+  title="With Image"
+  scope={{ Card, Link, Spacer, Text, Image }}
+  code={`
+<Card width="400px">
+  <Image src="https://user-images.githubusercontent.com/11304944/76085431-fd036480-5fec-11ea-8412-9e581425344a.png"
+   height="200" width="400" style={{ objectFit: 'cover' }} />
+  <Text h4 style={{ marginBottom: '0' }}>ZEIT UI React</Text>
+  <Text type="secondary" small>Modern and minimalist React UI library.</Text>
+  <Card.Footer>
+    <Link block target="_blank" href="https://github.com/zeit-ui/react">Visit source code on GitHub.</Link>
+  </Card.Footer>
+</Card>
+`} />
+
+<Playground
+  title="With Divider"
+  desc="Show different types of content using `Divider`"
+  scope={{ Card, Text, Divider, Code }}
+  code={`
+<Card width="400px">
+  <Card.Content>
+    <Text b>Description</Text>
+  </Card.Content>
+  <Divider y={0} />
+  <Card.Content>
+    <Text>The Object constructor creates an object wrapper for the given value.</Text>
+    <Text>When called in a non-constructor context, Object behaves identically to <Code>new Object()</Code>.</Text>
+  </Card.Content>
+</Card>
+`} />
+
+<Attributes edit="/pages/en-us/components/card.mdx">
+<Attributes.Title>Card.Props</Attributes.Title>
+
+| Attribute | Description | Type | Accepted values | Default
+| ---------- | ---------- | ---- |  -------------- | ------ |
+| **hoverable** | add effect on hover | `boolean` | - | `false` |
+| **shadow** | show shadow | `boolean` | - | `false` |
+| **type** | card type | [CardType](#cardtype) | - | `default` |
+| **width** | CSS width value | `string` | - | `100%` |
+| ... | native props | `HTMLAttributes` | `'id', className', ...` | - |
+
+<Attributes.Title alias="Card.Body">Card.Content.Props</Attributes.Title>
+
+| Attribute | Description | Type | Accepted values | Default
+| ---------- | ---------- | ---- |  -------------- | ------ |
+| ... | native props | `HTMLAttributes` | `'id', className', ...` | - |
+
+<Attributes.Title alias="Card.Actions">Card.Footer.Props</Attributes.Title>
+
+| Attribute | Description | Type | Accepted values | Default
+| ---------- | ---------- | ---- |  -------------- | ------ |
+| **disableAutoMargin** | cancel automatic margin value | `boolean` | - | `false` |
+| ... | native props | `HTMLAttributes` | `'id', className', ...` | - |
+
+<Attributes.Title>CardType</Attributes.Title>
+
+```ts
+type CardType = 'default'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'dark'
+  | 'lite'
+  | 'alert'
+  | 'purple'
+  | 'violet'
+  | 'cyan'
+```
+
+</Attributes>
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>
