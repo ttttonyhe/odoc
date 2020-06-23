@@ -1,3 +1,0 @@
-## Custom themes example
-
-
