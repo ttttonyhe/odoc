@@ -1138,7 +1138,7 @@
 
 "@types/react@^16.9.38":
   version "16.9.38"
-  resolved "https://registry.npm.taobao.org/@types/react/download/@types/react-16.9.38.tgz?cache=0&sync_timestamp=1592404119840&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Freact%2Fdownload%2F%40types%2Freact-16.9.38.tgz#868405dace93a4095d3e054f4c4a1de7a1ac0680"
+  resolved "https://registry.npm.taobao.org/@types/react/download/@types/react-16.9.38.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Freact%2Fdownload%2F%40types%2Freact-16.9.38.tgz#868405dace93a4095d3e054f4c4a1de7a1ac0680"
   integrity sha1-hoQF2s6TpAldPgVPTEod56GsBoA=
   dependencies:
     "@types/prop-types" "*"
@@ -1303,6 +1303,13 @@
   version "4.2.2"
   resolved "https://registry.npm.taobao.org/@xtuc/long/download/@xtuc/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha1-0pHGpOl5ibXGHZrPOWrk/hM6cY0=
+
+"@zeit-ui/react@^1.7.2":
+  version "1.7.2"
+  resolved "https://registry.npm.taobao.org/@zeit-ui/react/download/@zeit-ui/react-1.7.2.tgz#37f60b1ed097d2a628427d76f598ed3eda13f14d"
+  integrity sha1-N/YLHtCX0qYoQn129ZjtPtoT8U0=
+  dependencies:
+    styled-jsx "^3.2.5"
 
 acorn@^6.4.1:
   version "6.4.1"
@@ -5538,7 +5545,7 @@ style-to-object@^0.2.1:
   dependencies:
     inline-style-parser "0.1.1"
 
-styled-jsx@3.3.0:
+styled-jsx@3.3.0, styled-jsx@^3.2.5:
   version "3.3.0"
   resolved "https://registry.npm.taobao.org/styled-jsx/download/styled-jsx-3.3.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fstyled-jsx%2Fdownload%2Fstyled-jsx-3.3.0.tgz#32335c1a3ecfc923ba4f9c056eeb3d4699006b09"
   integrity sha1-MjNcGj7PySO6T5wFbus9RpkAawk=
