@@ -28,3 +28,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+NOTE:
++ 类组件只能使用 withRouter()
++ withRouter 的 TypeScript 类型支持需要从 "next/dist/client/with-router" 引入 WithRouterProps
+```typescript
+import { withRouter } from "next/router";
+import { WithRouterProps } from "next/dist/client/with-router";
+```

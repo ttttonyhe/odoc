@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import axios from "axios";
 
 // NOTE: 不通过 next/link 改变路由路径
