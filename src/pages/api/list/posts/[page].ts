@@ -62,12 +62,13 @@ export default (
         if (key !== undefined) {
           // 判断为文件夹内文件，增加至文件夹子对象 folderFiles 数组
           let array = filesArray[key].folderFiles;
+          // 只替换字符串右侧 .mdx 字符，避免文件(夹)名中出现 .mdx 字符
           filesArray[key].folderFiles[array.length] = fPath
             .replace(filesExcludePath, "")
-            .split(".")[0];
+            .replace(/\.mdx+$/g,"");
         } else {
           // 判断不为文件夹内文件，增加至 filesArray 数组
-          filesArray.push(fPath.replace(filesExcludePath, "").split(".")[0]);
+          filesArray.push(fPath.replace(filesExcludePath, "").replace(/\.mdx+$/g,""));
         }
       }
     });
