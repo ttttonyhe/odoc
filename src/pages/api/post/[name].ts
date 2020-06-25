@@ -22,7 +22,7 @@ export default (
 
   // 获取当前文件路径 / 替换 -
   let filePath: string =
-    resolve("./") + "/src/pages/post/" + fileString.replace(/-/g, "/") + ".mdx";
+    resolve("./") + "/src/pages/posts/" + fileString.replace(/-/g, "/") + ".mdx";
 
   // 判断文件是否存在
   fs.access(filePath, fs.constants.F_OK, (err: any) => {
@@ -35,7 +35,7 @@ export default (
         let timeNumber: Date = new Date(stat.mtime);
 
         // 获取当前文件项目内完整路由
-        let fileRoute: string = "/post/" + fileString.replace("-", "/");
+        let fileRoute: string = "/posts/" + fileString.replace("-", "/");
 
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");

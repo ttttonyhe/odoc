@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import axios from "axios";
 
 // NOTE: 不通过 next/link 改变路由路径
 import Router from "next/router";
@@ -16,24 +17,58 @@ import { WithRouterProps } from "next/dist/client/with-router";
 
 interface propsType extends WithRouterProps {}
 
-class Header extends React.Component<propsType, any> {
+class Header extends React.Component<
+  propsType,
+  { menuItems: []; notAtHomePath: string }
+> {
   constructor(props: propsType) {
     super(props);
+    this.state = {
+      menuItems: [],
+      notAtHomePath: null,
+    };
   }
+  componentDidMount() {
+    // 获取全部分类
+    axios.get("/api/list/cates/all").then((res) => {
+      this.setState({
+        menuItems: res.data,
+      });
+    });
+  }
+  // 处理路由跳转
   navigateTo = (path: string): void => {
     Router.push(path);
   };
   render() {
+    /*
+      NOTE: 进入 /posts/ 路由下，更改菜单项 value 为 /posts/:分类名
+    */
     return (
       <header>
         <Tabs
-          value={this.props.router.pathname}
+          value={
+            this.props.router.pathname.split("/")[1] == "posts"
+              ? "/" +
+                this.props.router.pathname.split("/")[1] +
+                "/" +
+                this.props.router.pathname.split("/")[2]
+              : this.props.router.pathname
+          }
           initialValue="/"
           hideDivider
           onChange={this.navigateTo}
         >
-          <Tabs.Item label="Hello" value="/post/hello"></Tabs.Item>
           <Tabs.Item label="Home" value="/"></Tabs.Item>
+          {this.state.menuItems.map((item: any, index) => {
+            return (
+              <Tabs.Item
+                label={item.cateName}
+                value={item.catePath}
+                key={"menu" + index}
+              ></Tabs.Item>
+            );
+          })}
         </Tabs>
       </header>
     );

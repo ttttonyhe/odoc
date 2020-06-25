@@ -22,7 +22,10 @@ export default (
   let fileString: string = req.query.page;
   // 获取当前项目路径
   let filesPath: string =
-    resolve("./") + "/src/pages/" + fileString.replace(/-/g, "/");
+    resolve("./") + "/src/pages/posts/" + fileString.replace(/-/g, "/");
+  // 获取路由排除路径
+  let filesExcludePath: string =
+    resolve("./") + "/src/pages";
   // 初始化内容数组
   let filesArray: any = [];
 
@@ -46,7 +49,7 @@ export default (
            }
         */
           filesArray.push({
-            folderName: fPath.replace(filesPath, ""),
+            folderName: fPath.replace(filesPath + '/', ""),
             folderFiles: [],
           });
           // 判断为文件夹，递归获取文件夹内文件并传参文件夹子对象的键位
@@ -60,11 +63,11 @@ export default (
           // 判断为文件夹内文件，增加至文件夹子对象 folderFiles 数组
           let array = filesArray[key].folderFiles;
           filesArray[key].folderFiles[array.length] = fPath
-            .replace(filesPath, "")
+            .replace(filesExcludePath, "")
             .split(".")[0];
         } else {
           // 判断不为文件夹内文件，增加至 filesArray 数组
-          filesArray.push(fPath.replace(filesPath, "").split(".")[0]);
+          filesArray.push(fPath.replace(filesExcludePath, "").split(".")[0]);
         }
       }
     });
