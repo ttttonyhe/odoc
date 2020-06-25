@@ -1,3 +1,6 @@
+/*
+  页面主要入口
+*/
 import { AppProps } from "next/app";
 import Header from "./components/header";
 

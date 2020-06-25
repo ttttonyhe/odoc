@@ -3,7 +3,7 @@ const withMDX = require('@next/mdx')({
 })
 
 module.exports = withMDX({
-    pageExtensions: ['mdx', 'tsx'],
+    pageExtensions: ['mdx', 'tsx', 'ts'],
     poweredByHeader: false,
     generateEtags: false,
 })
