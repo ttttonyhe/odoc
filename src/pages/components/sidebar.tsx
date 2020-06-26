@@ -3,6 +3,8 @@
 */
 import Link from "next/link";
 import { useRouter } from "next/router";
+import sidebarItems from "../../data/sidebaritems.json";
+
 interface sidebarItemsType {
   name?: string;
   path?: string;
@@ -11,7 +13,7 @@ interface sidebarItemsType {
   folderFiles?: [];
 }
 
-function Sidebar({ sidebarItems }) {
+function Sidebar() {
   const router = useRouter();
   let cate: string =
     router.pathname.split("/")[1] == "posts"

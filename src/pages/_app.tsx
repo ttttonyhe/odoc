@@ -4,8 +4,7 @@
 import { AppProps } from "next/app";
 import Header from "./components/header";
 import Sidebar from "./components/sidebar";
-import menuItems from "../data/menuitems.json";
-import sidebarItems from "../data/sidebaritems.json";
+import Footer from "./components/footer";
 
 // 引入 Zeit-UI React
 import { ZeitProvider, CssBaseline } from "@zeit-ui/react";
@@ -14,10 +13,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ZeitProvider>
       <CssBaseline />
-      <Header menuItems={menuItems} />
+      <Header/>
       <div>
-        <Sidebar sidebarItems={sidebarItems} />
+        <Sidebar/>
         <Component {...pageProps} />
+        <Footer />
       </div>
     </ZeitProvider>
   );

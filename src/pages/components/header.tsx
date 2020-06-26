@@ -1,8 +1,9 @@
 // NOTE: 不通过 next/link 改变路由路径
 import { useRouter } from "next/router";
 import { Tabs } from "@zeit-ui/react";
+import menuItems from "../../data/menuitems.json";
 
-function Header({ menuItems }) {
+function Header() {
   const router = useRouter();
   /*
       NOTE: 进入 /posts/ 路由下，更改菜单项 value 为 /posts/:分类名
