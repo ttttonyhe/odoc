@@ -1,6 +1,9 @@
 /*
-  获取 :page 目录下所有目录中所有路由路径
-  :page 内容以 - 分隔表示目录
+  获取 pages/posts/ 目录下所有文件夹名称/路由
+  {
+    cateName:string,
+    catePath:string
+  }
 */
 
 const fs = require("fs");

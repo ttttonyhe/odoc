@@ -51,15 +51,20 @@ fs.readFile(resolve("../") + "/src/data/menuitems.json", "utf-8", function (err,
                         if (key !== undefined) {
                             // 判断为文件夹内文件，增加至文件夹子对象 folderFiles 数组
                             var array = filesArray[key].folderFiles;
-                            // 只替换字符串右侧 .mdx 字符，避免文件(夹)名中出现 .mdx 字符
-                            filesArray[key].folderFiles[array.length] = {
-                                name: fPath
-                                    .replace(filesPath + "/" + filesArray[key].folderName + "/", "")
-                                    .replace(/\.mdx+$/g, ""),
-                                path: fPath
-                                    .replace(filesExcludePath, "")
-                                    .replace(/\.mdx+$/g, "")
-                            };
+                            // 获取文件名称
+                            var fileName = fPath
+                                .replace(filesPath + "/" + filesArray[key].folderName + "/", "")
+                                .replace(/\.mdx+$/g, "");
+                            // 判断是否为隐藏文件 (开头是否为 .)
+                            if (fileName.charAt(0) !== "." && fileName !== "index") {
+                                // 只替换字符串右侧 .mdx 字符，避免文件(夹)名中出现 .mdx 字符
+                                filesArray[key].folderFiles[array.length] = {
+                                    name: fileName,
+                                    path: fPath
+                                        .replace(filesExcludePath, "")
+                                        .replace(/\.mdx+$/g, "")
+                                };
+                            }
                         }
                         else {
                             // 判断不为文件夹内文件
@@ -68,12 +73,10 @@ fs.readFile(resolve("../") + "/src/data/menuitems.json", "utf-8", function (err,
                                 .replace(filesPath + "/", "")
                                 .replace(/\.mdx+$/g, "");
                             // 判断是否为隐藏文件 (开头是否为 .)
-                            if (fileName.charAt(0) !== ".") {
+                            if (fileName.charAt(0) !== "." && fileName !== "index") {
                                 // 增加至 filesArray 数组
                                 filesArray.push({
-                                    name: fPath
-                                        .replace(filesPath + "/", "")
-                                        .replace(/\.mdx+$/g, ""),
+                                    name: fileName,
                                     path: fPath
                                         .replace(filesExcludePath, "")
                                         .replace(/\.mdx+$/g, "")

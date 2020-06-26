@@ -1,5 +1,5 @@
 /*
- 文章底部
+ 全站底部
 */
 
 import React from "react";
@@ -22,7 +22,9 @@ class Footer extends React.Component<any, any> {
   async getPostInfo() {
     let routeArray = this.props.router.pathname.split("/");
     let postRoute: string = "";
+    // 当前处在文章页内
     if (routeArray.length >= 4) {
+      // 获取文章页路由
       for (let i = 2; i < routeArray.length; ++i) {
         if (i == 2) postRoute += routeArray[i];
         else postRoute += "-" + routeArray[i];
@@ -31,6 +33,7 @@ class Footer extends React.Component<any, any> {
         updateDate: string;
         postRoute: string;
       };
+      // 获取文章信息
       data = await axios.get("/api/post/" + postRoute).then((res) => {
         return res.data;
       });
@@ -45,12 +48,26 @@ class Footer extends React.Component<any, any> {
   }
   render() {
     return this.props.router.pathname.split("/").length >= 4 ? (
-      <p>
-        This is footer | update date:
-        {this.state.postData.updateDate}
-      </p>
+      <div className="foot">
+        <p>
+          Edit this page on{" "}
+          <a
+            href={
+              "https://github.com/HelipengTony/docs-site/tree/master/src/pages" +
+              this.props.router.pathname +
+              ".mdx"
+            }
+          >
+            Github
+          </a>
+          | update date:
+          {this.state.postData.updateDate}
+        </p>
+      </div>
     ) : (
-      <p>This is footer | nothing</p>
+      <div className="foot">
+        <p>This is footer | nothing</p>
+      </div>
     );
   }
 }

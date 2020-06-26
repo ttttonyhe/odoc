@@ -1,8 +1,10 @@
 /*
-  首页
+  全站左边栏
 */
 import Link from "next/link";
 import { useRouter } from "next/router";
+
+// 获取已生成的左边栏数据
 import sidebarItems from "../../data/sidebaritems.json";
 
 interface sidebarItemsType {
@@ -21,37 +23,65 @@ function Sidebar() {
       : "";
   if (cate == "") {
     return (
-      <div>
+      <div className="side">
         <p>this is sidebar</p>
       </div>
     );
   } else {
-    console.log(cate);
+    // 当前分类主页按钮
+    const homeRoute =
+      router.pathname.split("/")[1] == "posts"
+        ? "/" +
+          router.pathname.split("/")[1] +
+          "/" +
+          router.pathname.split("/")[2]
+        : router.pathname;
     return (
-      <div>
-        <p>this is sidebar</p>
-        {sidebarItems[cate].listContent.map(
+      <div className="side">
+        <Link href={homeRoute}>
+          <a>
+            <h4 className={homeRoute == router.pathname ? "active" : ""}>
+              主页 Introduction
+            </h4>
+          </a>
+        </Link>
+        {
+          // 数据对象按照路由名称为键获取数据
+          sidebarItems[cate].listContent.map(
           (item: Readonly<sidebarItemsType>, index: string) => {
             if (item.folderName == undefined) {
               return (
                 <Link href={item.path} key={"post" + index}>
-                  <p>
-                    {item.name}({item.path})
-                  </p>
+                  <a>
+                    <h4
+                      className={item.path == router.pathname ? "active" : ""}
+                    >
+                      {item.name}
+                    </h4>
+                  </a>
                 </Link>
               );
             } else {
-              // map 的每一次有且只有一次 return
+              /* 
+                获取文件夹内文件
+                map 的每一次有且只有一次 return
+              */
               return (
-                <div key={"folder" + item.folderName}>
-                  <h5>{item.folderName}</h5>
+                <div key={"folder" + item.folderName} className="section">
+                  <h3>{item.folderName}</h3>
                   {item.folderFiles.map(
                     (subitem: Readonly<sidebarItemsType>, index) => {
                       return (
                         <Link href={subitem.path} key={"subPost" + index}>
-                          <p>
-                            {subitem.name}({subitem.path})
-                          </p>
+                          <a>
+                            <h4
+                              className={
+                                subitem.path == router.pathname ? "active" : ""
+                              }
+                            >
+                              {subitem.name}
+                            </h4>
+                          </a>
                         </Link>
                       );
                     }
