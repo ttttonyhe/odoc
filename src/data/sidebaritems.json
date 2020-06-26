@@ -1,0 +1,29 @@
+{
+    "/posts/folder1": {
+        "listContent": [{
+            "name": "2",
+            "path": "/posts/folder1/2"
+        }, {
+            "name": "index",
+            "path": "/posts/folder1/index"
+        }]
+    },
+    "/posts/post": {
+        "listContent": [{
+            "folderName": "folder2",
+            "folderFiles": [{
+                "name": "1",
+                "path": "/posts/post/folder2/1"
+            }]
+        }, {
+            "folderName": "fuck.mdx",
+            "folderFiles": [{
+                "name": "1",
+                "path": "/posts/post/fuck.mdx/1"
+            }]
+        }, {
+            "name": "index",
+            "path": "/posts/post/index"
+        }]
+    }
+}
