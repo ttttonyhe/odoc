@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "tsc generators/*.ts && cd generators && node menu.js && node sidebar.js && cd .. && next dev",
-    "build": "tsc generators/*.ts && node generators/menu.js && node generators/sidebar.js && next build",
-    "start": "tsc generators/*.ts && node generators/menu.js && node generators/sidebar.js && next start"
+    "build": "tsc generators/*.ts && cd generators && node menu.js && node sidebar.js && cd .. && next build",
+    "start": "tsc generators/*.ts && cd generators && node menu.js && node sidebar.js && cd .. && next start"
   },
   "dependencies": {
     "@mdx-js/loader": "^1.6.6",
