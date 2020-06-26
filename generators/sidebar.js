@@ -1,5 +1,22 @@
 "use strict";
 exports.__esModule = true;
+/*
+  获取 pages/posts/ 目录下所有文件夹内的文件名称/路由
+  不引索 index.mdx 文件
+  {
+    catePath: {
+      listContent:[{
+        folderName:string,
+        folderFiles:[
+          {
+            name:string,
+            path:string
+          }
+        ]
+      }]
+    }
+  }
+*/
 var fs = require("fs");
 var resolve = require("path").resolve;
 var join = require("path").join;
