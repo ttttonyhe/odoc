@@ -1,8 +1,10 @@
 /*
   页面主要入口
 */
+import React from "react";
 import { AppProps } from "next/app";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 // 引入全局组件
 import Header from "../../odoc/components/header";
@@ -38,7 +40,7 @@ Router.events.on("routeChangeError", () => {
 });
 
 // 引入 Zeit-UI React
-import { ZeitProvider, CssBaseline } from "@zeit-ui/react";
+import { ZeitProvider, CssBaseline, Modal } from "@zeit-ui/react";
 
 // MDX 代码高亮
 import { MDXProvider } from "@mdx-js/react";
@@ -56,10 +58,41 @@ const components = {
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
+
+  // Modal 组件关闭开启状态，用于手机端展示 sidebar
+  const [state, setState] = React.useState(false);
+  const handler = () => setState(true);
+  const closeHandler = () => {
+    setState(false);
+  };
+
+  // 网页标题获取
+  let title: string;
+  if (router.pathname == "/") {
+    title = "ODoc - One-click-away Documentation";
+  } else if (router.pathname.split("/").length == 3) {
+    title = router.pathname.split("/")[2];
+  } else if (router.pathname.split("/").length >= 4) {
+    title = router.pathname.split("/")[router.pathname.split("/").length - 1];
+  }
   return (
     <ZeitProvider>
+      <Head>
+        <title>{title}</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <CssBaseline />
       <Header />
+      <div onClick={handler} className="mobile-side">
+        <p>Click to view Index</p>
+      </div>
+      <Modal open={state} onClose={closeHandler}>
+        <Modal.Content>
+          <div onClick={closeHandler}>
+            <Sidebar />
+          </div>
+        </Modal.Content>
+      </Modal>
       <div className="main markdown-body">
         {router.pathname !== "/" ? <Sidebar /> : ""}
         <div className={router.pathname !== "/" ? "view" : "view home"}>

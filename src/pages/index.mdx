@@ -1,1 +1,130 @@
-### This is home
+import { Card, Grid, Badge, Tree } from "@zeit-ui/react";
+
+# 欢迎使用 ODoc
+
+ODoc 是一个支持**热加载/预览**、一键**生产环境**部署，基于 [MDX](https://mdxjs.com) 文件生成路由的文档站点生成引擎。基于 [Next.js](https://www.nextjs.cn) 开发并支持框架提供的全部特性，插件、热预览、静态站点生成等。
+零代码需求，只需撰写 **MarkDown** 文件并通过文件夹按分类归档，即可快速生成文档站点。支持 **React 组件**的预览和内容嵌入、支持按**标题搜索**的功能(全文搜索后续更新)、通过 [Prism.js](https://prismjs.com) 支持**代码高亮**等。
+
+<Grid.Container gap={2}>
+  <Grid md={6} xs={24}>
+    <Card shadow>
+      <h3 style={{ textTransform: "capitalize" }}>MarkDown 支持</h3>
+      <span>
+        <Badge type="success">功能</Badge> .MDX / .MD 页面
+      </span>
+    </Card>
+  </Grid>
+  <Grid md={6} xs={24}>
+    <Card shadow>
+      <h3 style={{ textTransform: "capitalize" }}>基于 Next.js</h3>
+      <span>
+        <Badge type="success">功能</Badge> 支持 .tsx / .jsx 页面
+      </span>
+    </Card>
+  </Grid>
+  <Grid md={6} xs={24}>
+    <Card shadow>
+      <h3 style={{ textTransform: "capitalize" }}>内置搜索支持</h3>
+      <span>
+        <Badge type="warning">更新中</Badge> 支持标题搜索
+      </span>
+    </Card>
+  </Grid>
+  <Grid md={6} xs={24}>
+    <Card shadow>
+      <h3 style={{ textTransform: "capitalize" }}>文件自动路由</h3>
+      <span>
+        <Badge type="success">功能</Badge> 按照文件目录生成路由
+      </span>
+    </Card>
+  </Grid>
+</Grid.Container>
+
+<br />
+
+# 关键目录指南
+
+<Tree
+  value={[
+    {
+      type: "directory",
+      name: "odoc",
+      extra: "ODoc 主要目录",
+      files: [
+        {
+          type: "directory",
+          name: "components",
+          extra: "ODoc 组件目录",
+        },
+        {
+          type: "directory",
+          name: "generators",
+          extra: "ODoc 生成器目录",
+        },
+        {
+          type: "directory",
+          name: "lib/components",
+          extra: "ODoc 插件组件目录",
+        },
+        {
+          type: "directory",
+          name: "style",
+          extra: "ODoc 样式文件目录",
+        },
+      ],
+    },
+    {
+      type: "directory",
+      name: "src",
+      extra: "Next.js 主要目录",
+      files: [
+        {
+          type: "directory",
+          name: "pages",
+          extra: "Next.js 内容目录",
+          files: [
+            {
+              type: "directory",
+              name: "posts",
+              extra: "ODoc 内容文件目录",
+            },
+            {
+              type: "directory",
+              name: "api",
+              extra: "Next.js API 目录",
+            },
+            {
+              type: "file",
+              name: "_app.tsx",
+              extra: "Next.js 主要入口文件",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "directory",
+      name: "public",
+      extra: "Next.js 公共目录",
+    },
+    {
+      type: "file",
+      name: "odoc.config.js",
+      extra: "ODoc 全局配置文件",
+    },
+    {
+      type: "file",
+      name: "next.config.js",
+      extra: "Next.js 全局配置文件",
+    },
+  ]}
+/>
+
+<br />
+<br />
+
+# Introduction to ODoc
+
+ODoc enables you to quickly create **live-reloading**, **production-ready** documentation sites with MDX. It is based on [Next.js](https://www.nextjs.cn) so you get all its awesome features with it.
+0 line of code is needed, just write Markdown. It supports [MDX](https://mdxjs.com), title **searching**, file-system based routing and built-in **syntax highlighting**.
+If you want to see how it looks just look read the documentation, this entire site is built with ODoc starting from some markdown files.
