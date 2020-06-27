@@ -19,7 +19,7 @@ const fs = require("fs");
 const { resolve } = require("path");
 const join = require("path").join;
 
-fs.readFile(resolve("../") + "/src/data/menuitems.json", "utf-8", function (
+fs.readFile(resolve("../../") + "/src/data/menuitems.json", "utf-8", function (
   err: any,
   menuItems: any
 ) {
@@ -31,9 +31,9 @@ fs.readFile(resolve("../") + "/src/data/menuitems.json", "utf-8", function (
     for (let i = 0; i < menuItems.length; i++) {
       let fileString: string = menuItems[i].cateName;
       // 获取当前项目路径
-      let filesPath: string = resolve("../") + "/src/pages/posts/" + fileString;
+      let filesPath: string = resolve("../../") + "/src/pages/posts/" + fileString;
       // 获取路由排除路径
-      let filesExcludePath: string = resolve("../") + "/src/pages";
+      let filesExcludePath: string = resolve("../../") + "/src/pages";
       // 初始化内容数组
       let filesArray: any = [];
 
@@ -110,7 +110,7 @@ fs.readFile(resolve("../") + "/src/data/menuitems.json", "utf-8", function (
         listContent: findJsonFile(filesPath),
       };
     }
-    var file = resolve("../") + "/src/data/sidebaritems.json";
+    var file = resolve("../../") + "/src/data/sidebaritems.json";
 
     //写入文件
     fs.writeFile(file, JSON.stringify(fileContent), function (err) {

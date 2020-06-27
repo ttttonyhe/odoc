@@ -3,21 +3,40 @@
   padding-top: 11px;
   height: 35px;
   border-bottom: 1px solid #eee;
+  box-shadow: 0px 1px 5px #3333330f;
   .logo {
     svg {
       height: 26px;
       width: 26px;
       stroke-width: 2;
     }
+    span {
+      font-weight: 600;
+      font-size: 22px;
+      vertical-align: text-bottom;
+      margin-left: 5px;
+      line-height: 33px;
+      display: none;
+      @media screen and (min-width: 48em) {
+        display: initial;
+      }
+    }
     display: inline-block;
     border-right: 1px solid #eee;
     margin-top: -12px;
-    padding-top: 12px;
+    padding-top: 9px;
     padding-right: 10px;
     padding-left: 10px;
     margin-right: 10px;
   }
   .tab {
+    &:nth-child(1) {
+      svg {
+        margin: 0px;
+        margin-top: -1px;
+        margin-left: -2px;
+      }
+    }
     font-size: 16px !important;
     letter-spacing: 0.5px;
     &:after {
@@ -31,7 +50,29 @@
   .tabs {
     margin-left: 5px;
     margin-top: -2.5px !important;
-    width: calc(100% - 280px) !important;
+    width: initial !important;
+    @media screen and (min-width: 48em) {
+      width: calc(100% - 404px) !important;
+    }
+  }
+  .right-div {
+    display: flex;
+    margin-right: 21px;
+    display: none;
+    @media screen and (min-width: 48em) {
+      display: initial;
+    }
+    a {
+      margin-right: 7px;
+      &:last-child {
+        margin-right: 0px;
+      }
+      svg {
+        width: 15px;
+        height: 15px;
+        margin-right: 2px;
+      }
+    }
   }
 }
 
@@ -43,6 +84,8 @@
     width: 280px;
     padding: 24px;
     display: none;
+    overflow: hidden;
+    overflow-y: auto;
     a {
       color: #555;
       text-decoration: none !important;
@@ -107,13 +150,41 @@
 .foot {
   position: fixed;
   bottom: 0px;
-  width: calc(100% - (280px * 2));
+  @media screen and (min-width: 48em) {
+    width: calc(100% - (280px * 2));
+    box-shadow: 0px -2px 10px #3333330f;
+  }
+  width: 100%;
   border-top: 1px solid #eee;
   background: #fff;
   height: 50px;
   padding: 10px 30px;
+  .default {
+    text-align: center;
+  }
   p {
     margin: 0px !important;
+    color: #607d8b;
+    letter-spacing: 0.1px;
+    text-transform: uppercase;
+    font-weight: 400;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 12px;
+    margin-top: 5px !important;
+    @media screen and (min-width: 48em) {
+      font-size: inherit !important;
+      margin-top: 1.5px !important;
+    }
+    span {
+      &:nth-child(1) {
+        float: left;
+      }
+      &:nth-child(2) {
+        float: right;
+      }
+    }
   }
 }
 
@@ -124,10 +195,14 @@
     max-height: calc(100% + 30px);
     overflow: hidden;
     overflow-y: auto;
-    margin: 0px 0px 0px 150px;
     width: 100%;
     border-bottom: none;
-    padding: 10px 180px 40px 30px;
+    padding: 0px 25px;
+    margin: 0px;
+    @media screen and (min-width: 48em) {
+      padding: 10px 180px 40px 30px !important;
+      margin: 0px 0px 0px 150px;
+    }
     pre {
       border: none !important;
       border-radius: 5px !important;
@@ -164,6 +239,18 @@
             width: 30px;
             height: 30px;
           }
+        }
+        .icon0 {
+          color: rgb(96, 125, 139);
+        }
+        .icon1 {
+          color: #1877f2;
+        }
+        .icon2 {
+          color: rgb(29, 161, 242);
+        }
+        .icon3 {
+          color: rgb(0, 150, 136);
         }
         p {
           margin: 0px;
@@ -213,5 +300,23 @@
   display: none;
   @media screen and (min-width: 48em) {
     display: block;
+  }
+}
+
+::selection {
+  background-color: #e2e8f0 !important;
+  color: #333 !important;
+}
+
+.home {
+  width: 100% !important;
+  .content {
+    margin-left: 0px !important;
+  }
+  .foot {
+    width: 100% !important;
+    @media screen and (min-width: 48em) {
+      width: calc(100% - 280px) !important;
+    }
   }
 }

@@ -11,9 +11,9 @@ const { resolve } = require("path");
 const join = require("path").join;
 
 // 获取当前项目路径
-let catePath: string = resolve("../") + "/src/pages/posts";
+let catePath: string = resolve("../../") + "/src/pages/posts";
 // 获取当前项目排除路径
-let cateExcludePath: string = resolve("../") + "/src/pages";
+let cateExcludePath: string = resolve("../../") + "/src/pages";
 // 初始化内容数组
 let catesArray: { cateName: string; catePath: string }[] = [];
 
@@ -34,7 +34,7 @@ cates.forEach(function (item: any) {
   }
 });
 
-const file = resolve("../") + "/src/data/menuitems.json";
+const file = resolve("../../") + "/src/data/menuitems.json";
 
 //写入文件
 fs.writeFile(file, JSON.stringify(catesArray), function (err: any) {

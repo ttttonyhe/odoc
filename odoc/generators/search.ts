@@ -13,9 +13,9 @@ const join = require("path").join;
 
 let fileContent: any = {};
 // 获取当前项目路径
-let filesPath: string = resolve("../") + "/src/pages/posts/";
+let filesPath: string = resolve("../../") + "/src/pages/posts/";
 // 获取路由排除路径
-let filesExcludePath: string = resolve("../") + "/src/pages";
+let filesExcludePath: string = resolve("../../") + "/src/pages";
 // 初始化内容数组
 let filesArray: any = [];
 
@@ -56,7 +56,7 @@ let findJsonFile = (path: string): [] => {
   return filesArray;
 };
 
-var file = resolve("../") + "/src/data/searchindex.json";
+var file = resolve("../../") + "/src/data/searchindex.json";
 
 //写入文件
 fs.writeFile(file, JSON.stringify(findJsonFile(filesPath)), function (err) {

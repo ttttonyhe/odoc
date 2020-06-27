@@ -26,6 +26,6 @@
     "**/*.ts",
     "**/*.tsx",
     "src/pages/_document.js",
-    "src/pages/api/list/posts/1.ts"
+    "src/api/list/posts/1.ts"
   ]
 }

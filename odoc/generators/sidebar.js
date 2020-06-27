@@ -20,7 +20,7 @@ exports.__esModule = true;
 var fs = require("fs");
 var resolve = require("path").resolve;
 var join = require("path").join;
-fs.readFile(resolve("../") + "/src/data/menuitems.json", "utf-8", function (err, menuItems) {
+fs.readFile(resolve("../../") + "/src/data/menuitems.json", "utf-8", function (err, menuItems) {
     if (err) {
         console.error("error - menu has not been created");
     }
@@ -30,9 +30,9 @@ fs.readFile(resolve("../") + "/src/data/menuitems.json", "utf-8", function (err,
         var _loop_1 = function (i) {
             var fileString = menuItems[i].cateName;
             // 获取当前项目路径
-            var filesPath = resolve("../") + "/src/pages/posts/" + fileString;
+            var filesPath = resolve("../../") + "/src/pages/posts/" + fileString;
             // 获取路由排除路径
-            var filesExcludePath = resolve("../") + "/src/pages";
+            var filesExcludePath = resolve("../../") + "/src/pages";
             // 初始化内容数组
             var filesArray = [];
             var findJsonFile = function (path, key) {
@@ -111,7 +111,7 @@ fs.readFile(resolve("../") + "/src/data/menuitems.json", "utf-8", function (err,
         for (var i = 0; i < menuItems.length; i++) {
             _loop_1(i);
         }
-        var file = resolve("../") + "/src/data/sidebaritems.json";
+        var file = resolve("../../") + "/src/data/sidebaritems.json";
         //写入文件
         fs.writeFile(file, JSON.stringify(fileContent), function (err) {
             if (err) {

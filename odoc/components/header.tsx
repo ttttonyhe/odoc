@@ -4,11 +4,11 @@
 // NOTE: 不通过 next/link 改变路由路径
 import React from "react";
 import { useRouter } from "next/router";
-import { Tabs } from "@zeit-ui/react";
-import { Book } from "@zeit-ui/react-icons";
+import { Tabs, Button } from "@zeit-ui/react";
+import { Book, Github, FileText, Coffee } from "@zeit-ui/react-icons";
 
 // 获取已生成的菜单数据
-import menuItems from "../data/menuitems.json";
+import menuItems from "../../src/data/menuitems.json";
 
 function Header() {
   const router = useRouter();
@@ -19,6 +19,7 @@ function Header() {
     <header className="header">
       <div className="logo">
         <Book />
+        <span>ODoc</span>
       </div>
       <Tabs
         value={
@@ -46,6 +47,26 @@ function Header() {
           );
         })}
       </Tabs>
+      <div className="right-div">
+        <a href="https://www.ouorz.com" target="_blank">
+          <Button size="mini" auto>
+            <FileText />
+            Blog
+          </Button>
+        </a>
+        <a href="https://github.com/HelipengTony" target="_blank">
+          <Button size="mini" auto>
+            <Github />
+            Github
+          </Button>
+        </a>
+        <a href="https://www.ouorz.com/donation" target="_blank">
+          <Button size="mini" auto type="warning" ghost>
+            <Coffee />
+            Donation
+          </Button>
+        </a>
+      </div>
     </header>
   );
 }

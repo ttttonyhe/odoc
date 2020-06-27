@@ -14,9 +14,9 @@ var resolve = require("path").resolve;
 var join = require("path").join;
 var fileContent = {};
 // 获取当前项目路径
-var filesPath = resolve("../") + "/src/pages/posts/";
+var filesPath = resolve("../../") + "/src/pages/posts/";
 // 获取路由排除路径
-var filesExcludePath = resolve("../") + "/src/pages";
+var filesExcludePath = resolve("../../") + "/src/pages";
 // 初始化内容数组
 var filesArray = [];
 var findJsonFile = function (path) {
@@ -54,7 +54,7 @@ var findJsonFile = function (path) {
     });
     return filesArray;
 };
-var file = resolve("../") + "/src/data/searchindex.json";
+var file = resolve("../../") + "/src/data/searchindex.json";
 //写入文件
 fs.writeFile(file, JSON.stringify(findJsonFile(filesPath)), function (err) {
     if (err) {

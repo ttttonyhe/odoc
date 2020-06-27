@@ -15,14 +15,17 @@ export default (
   res: {
     statusCode: number;
     setHeader: (arg0: string, arg1: string) => void;
-    end: (arg0: string) => void;
+    send: (arg0: string) => void;
   }
 ) => {
   let fileString: string = req.query.name;
 
   // 获取当前文件路径 / 替换 -
   let filePath: string =
-    resolve("./") + "/src/pages/posts/" + fileString.replace(/-/g, "/") + ".mdx";
+    resolve("./") +
+    "/src/pages/posts/" +
+    fileString.replace(/-/g, "/") +
+    ".mdx";
 
   // 判断文件是否存在
   fs.access(filePath, fs.constants.F_OK, (err: any) => {
@@ -39,7 +42,7 @@ export default (
 
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");
-        res.end(
+        res.send(
           JSON.stringify({
             postRoute: fileRoute,
             updateDate: timeNumber.toLocaleDateString().replace(/\//g, "-"),
@@ -48,7 +51,7 @@ export default (
       } else {
         res.statusCode = 404;
         res.setHeader("Content-Type", "application/json");
-        res.end(
+        res.send(
           JSON.stringify({
             errMsg: "No such file",
           })
@@ -58,7 +61,7 @@ export default (
       // 文件不存在
       res.statusCode = 404;
       res.setHeader("Content-Type", "application/json");
-      res.end(
+      res.send(
         JSON.stringify({
           errMsg: "No such file or directory",
         })
