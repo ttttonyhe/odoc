@@ -44,7 +44,7 @@ import { ZeitProvider, CssBaseline } from "@zeit-ui/react";
 import { MDXProvider } from "@mdx-js/react";
 
 // 通过 Prism-react-render 实现代码高亮
-import CodeBlock from "./codeBlock";
+import CodeBlock from "../lib/components/codeBlock";
 const components = {
   pre: (props) => <div {...props} />,
   code: CodeBlock,
