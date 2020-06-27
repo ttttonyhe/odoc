@@ -31,6 +31,7 @@
   .tabs {
     margin-left: 5px;
     margin-top: -2.5px !important;
+    width: calc(100% - 280px) !important;
   }
 }
 
@@ -127,6 +128,10 @@
     width: 100%;
     border-bottom: none;
     padding: 10px 180px 40px 30px;
+    pre {
+      border: none !important;
+      border-radius: 5px !important;
+    }
   }
   .aside {
     .inside {
@@ -140,6 +145,10 @@
         &:nth-child(1) {
           margin: 0px;
         }
+      }
+      .auto-complete {
+        width: 100%;
+        margin: 15px 0px 0px 0px;
       }
       .card {
         display: flex;
@@ -193,5 +202,16 @@
         display: block;
       }
     }
+  }
+}
+
+.themeBtn {
+  min-width: 0px;
+  position: absolute;
+  right: 22px;
+  top: 7px;
+  display: none;
+  @media screen and (min-width: 48em) {
+    display: block;
   }
 }

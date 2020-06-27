@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 // 获取已生成的左边栏数据
-import sidebarItems from "../../data/sidebaritems.json";
+import sidebarItems from "../data/sidebaritems.json";
 
 interface sidebarItemsType {
   name?: string;

@@ -2,12 +2,13 @@
   全站顶部
 */
 // NOTE: 不通过 next/link 改变路由路径
+import React from "react";
 import { useRouter } from "next/router";
 import { Tabs } from "@zeit-ui/react";
 import { Book } from "@zeit-ui/react-icons";
 
 // 获取已生成的菜单数据
-import menuItems from "../../data/menuitems.json";
+import menuItems from "../data/menuitems.json";
 
 function Header() {
   const router = useRouter();
