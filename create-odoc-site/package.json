@@ -1,6 +1,6 @@
 {
   "name": "create-odoc-site",
-  "version": "0.0.12",
+  "version": "0.0.14",
   "main": "index.js",
   "author": "HelipengTony <tony.hlp@hotmail.com>",
   "license": "MIT",
@@ -9,7 +9,6 @@
   },
   "languageName": "node",
   "dependencies": {
-    "create-odoc-site": "^0.0.11",
     "execa": "^4.0.2",
     "github-download-parts": "^2.1.0",
     "listr": "^0.14.3",

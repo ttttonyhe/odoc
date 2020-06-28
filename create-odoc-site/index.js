@@ -34,26 +34,20 @@ const execa = require("execa");
     ])
 
     new Listr([{
-            title: 'All set. Start generating ODoc site...',
-            task: () => {
-                odocRepo('HelipengTony/odoc', '.', 'example')
-                    .then(() => {
-                        return;
-                    })
-                    .catch(() => {
-                        throw new Error('Generation failed');
-                    });
+            title: 'Cloning ODoc example',
+            task: async () => {
+                await odocRepo('HelipengTony/odoc', '.', 'example')
             }
         },
         {
-            title: 'Installing dependencies...',
-            task: () => {
-                execa("yarn", ["install"])
+            title: 'Dependencies installation',
+            task: async () => {
+                await execa("yarn", ["install"])
             }
         },
         {
-            title: 'Almost done...',
-            task: () => {
+            title: 'Configuration file generation',
+            task: async () => {
                 const configContent = `
                     export default {
                         siteName: "${siteInfo.siteName}",
@@ -66,9 +60,9 @@ const execa = require("execa");
                 `;
                 fs.writeFile("odoc.config.js", configContent, function (err) {
                     if (err) {
-                        throw new Error('Generation failed');
+                        console.error('Generation failed');
                     } else {
-                        console.log("Completed. Enjoy ODoc.");
+                        console.log("ODoc setup has completed. Please wait...");
                         return;
                     }
                 });
