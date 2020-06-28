@@ -83,9 +83,13 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <CssBaseline />
       <Header />
-      <div onClick={handler} className="mobile-side">
-        <p>Click to view Index</p>
-      </div>
+      {router.pathname !== "/" ? (
+        <div onClick={handler} className="mobile-side">
+          <p>Click to view Index</p>
+        </div>
+      ) : (
+        ""
+      )}
       <Modal open={state} onClose={closeHandler}>
         <Modal.Content>
           <div onClick={closeHandler}>
