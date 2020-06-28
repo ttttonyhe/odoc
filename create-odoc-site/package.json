@@ -1,0 +1,18 @@
+{
+  "name": "create-odoc-site",
+  "version": "0.0.12",
+  "main": "index.js",
+  "author": "HelipengTony <tony.hlp@hotmail.com>",
+  "license": "MIT",
+  "bin": {
+    "create-odoc-site": "index.js"
+  },
+  "languageName": "node",
+  "dependencies": {
+    "create-odoc-site": "^0.0.11",
+    "execa": "^4.0.2",
+    "github-download-parts": "^2.1.0",
+    "listr": "^0.14.3",
+    "prompts": "^2.3.2"
+  }
+}

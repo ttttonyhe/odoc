@@ -51,14 +51,21 @@
     margin-left: 5px;
     margin-top: -2.5px !important;
     width: initial !important;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-x: auto;
     @media screen and (min-width: 48em) {
-      width: calc(100% - 404px) !important;
+      width: fit-content !important;
+    }
+    header {
+      flex-wrap: nowrap;
     }
   }
   .right-div {
-    display: flex;
     margin-right: 21px;
     display: none;
+    right: 0px;
+    position: absolute;
     @media screen and (min-width: 48em) {
       display: initial;
     }
@@ -191,6 +198,13 @@
 .center {
   display: flex;
   height: calc(100vh - 47px - 50px);
+  .tree {
+    .content {
+      padding: 0px !important;
+      margin: 0px !important;
+      max-height: fit-content !important;
+    }
+  }
   .content {
     max-height: calc(100% + 30px);
     overflow: hidden;
@@ -367,7 +381,11 @@
 
 .card .content {
   padding: 16pt 16pt !important;
-  h1,h2,h3,h4,h5 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
     margin-bottom: 10px;
   }
 }

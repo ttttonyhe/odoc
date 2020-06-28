@@ -7,6 +7,9 @@ import { useRouter } from "next/router";
 import { Tabs, Button } from "@zeit-ui/react";
 import { Book, Github, FileText, Coffee } from "@zeit-ui/react-icons";
 
+// 读取全局配置
+import odoc from "../../odoc.config";
+
 // 获取已生成的菜单数据
 import menuItems from "../../src/data/menuitems.json";
 
@@ -19,7 +22,7 @@ function Header() {
     <header className="header">
       <div className="logo">
         <Book />
-        <span>ODoc</span>
+        <span>{odoc.siteName}</span>
       </div>
       <Tabs
         value={
@@ -51,7 +54,7 @@ function Header() {
         <a href="https://www.ouorz.com" target="_blank">
           <Button size="mini" auto>
             <FileText />
-            Blog
+            Author
           </Button>
         </a>
         <a href="https://github.com/HelipengTony" target="_blank">
