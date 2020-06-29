@@ -23,7 +23,7 @@ ODoc 是一个支持**热加载/预览**、一键**生产环境**部署，基于
 
 <br/>
 
-![QQ20200629-115038@2x.png](https://i.loli.net/2020/06/29/iZJfUEBDOWeskyR.png)
+![screenshot](https://i.loli.net/2020/06/29/Wg3LZGdAaqzew9u.png)
 
 <br/>
 
