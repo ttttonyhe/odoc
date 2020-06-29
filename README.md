@@ -12,6 +12,10 @@
   <a href="https://github.com/HelipengTony/odoc">
     <img src="https://img.shields.io/github/license/HelipengTony/odoc.svg" alt="license">
   </a>
+
+  <a href="https://travis-ci.com/HelipengTony/odoc">
+    <img src="https://travis-ci.com/HelipengTony/odoc.svg?branch=site" alt="build-status">
+  </a>
 </div>
 
 <br/>
