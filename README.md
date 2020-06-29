@@ -60,10 +60,21 @@ yarn install / npm install
 
 ![configuration_generation_1](https://i.loli.net/2020/06/29/A65Q8ioMqfYcjae.png)
 
-接下来等待步骤完成，并自动开始配置：
+接下来等待自动配置步骤完成，直到出现 Done! 的提示：
 
 ![configuration_generation_2](https://i.loli.net/2020/06/29/AZbDkqpRnKtiI5Y.png)
 
+接下来便可以启动你的 ODoc 项目了：
+```bash
+// Development
+yarn run dev / npm run dev
+```
+部署到开发环境：
+```bash
+// Production
+yarn run build
+yarn run start
+```
 
 <br/>
 
