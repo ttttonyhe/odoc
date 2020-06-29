@@ -2,6 +2,7 @@
   "name": "math-to-cs",
   "version": "0.1.0",
   "private": true,
+  "license": "SEE LICENSE IN LICENSE",
   "scripts": {
     "dev": "cd odoc && cd generators && node setup.js && cd ../../ && next dev",
     "build": "cd odoc && cd generators && node setup.js && cd ../../ && next build",
