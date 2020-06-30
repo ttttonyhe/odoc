@@ -7,7 +7,7 @@ module.exports = {
     },
     siteDes: "One-click-away Documentation",
     siteKeywords: "docs,docs generator,documentation",
-    i18nEnable: false,
+    i18nEnable: true,
     i18nConfig: {
         "default": "English",
         "English": "/posts/en",

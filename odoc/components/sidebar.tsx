@@ -24,14 +24,16 @@ interface sidebarItemsType {
 function Sidebar({ i18n }) {
   const router = useRouter();
   let cate: string =
-    router.pathname.split("/")[1] == "posts" &&
-    router.pathname.split("/").length >= 5
+    router.pathname.split("/")[1] == "posts"
       ? "/posts/" +
         (odocConfig.i18nEnable
           ? router.pathname.split("/")[2] + "/" + router.pathname.split("/")[3]
           : router.pathname.split("/")[2])
       : "";
-  if (cate == "") {
+  if (
+    cate == "" ||
+    (odocConfig.i18nEnable && router.pathname.split("/").length < 4)
+  ) {
     return (
       <div className="side">
         <p>404 Not Found</p>
