@@ -9,7 +9,7 @@ new Listr([{
           task: () => execa('tsc', ['menu.ts'])
         },
         {
-          title: 'one moment...',
+          title: 'please wait...',
           task: () => execa('node', ['menu.js'])
         },
       ])
@@ -23,7 +23,7 @@ new Listr([{
           task: () => execa('tsc', ['sidebar.ts'])
         },
         {
-          title: 'one moment...',
+          title: 'please wait...',
           task: () => execa('node', ['sidebar.js'])
         },
       ])
@@ -37,7 +37,7 @@ new Listr([{
           task: () => execa('tsc', ['search.ts'])
         },
         {
-          title: 'one moment...',
+          title: 'please wait...',
           task: () => execa('node', ['search.js'])
         },
       ])

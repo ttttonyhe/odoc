@@ -1,188 +1,125 @@
 /*
-  全站右边栏
+  全站左边栏
 */
-import React from "react";
-
-// 引入路由
+import Link from "next/link";
 import { useRouter } from "next/router";
 
-// 引入 UI 库
-import {
-  Chrome,
-  ChevronsRight,
-  Github,
-  Facebook,
-  Twitter,
-  Codesandbox,
-  ChevronsLeft,
-} from "@zeit-ui/react-icons";
-import {
-  Button,
-  AutoComplete,
-  useClipboard,
-  useToasts,
-  Tooltip,
-} from "@zeit-ui/react";
+import { Home } from "@zeit-ui/react-icons";
+import { Button } from "@zeit-ui/react";
 
-// 获取全局配置
-import odoc from "../../odoc.config";
+// 获取已生成的左边栏数据
+import sidebarItems from "../../src/data/sidebaritems.json";
 
-// 导入搜索引索
-import searchIndex from "../../src/data/searchindex.json";
+// 全局配置文件
+import odocConfig from "../../odoc.config";
 
-// 二维码生成依赖
-import Qrcode from "qrcode.react";
-
-function RightSide() {
-  const router = useRouter();
-
-  // 剪贴板访问
-  const { copy } = useClipboard();
-
-  // 提示组件
-  const [, setToast] = useToasts();
-
-  /* 搜索配置 */
-  const allOptions = searchIndex;
-  /* 
-    NOTE:在函数组件中使用状态
-    [name,function] = React.useState<nameType>()
-  */
-  const [options, setOptions] = React.useState<any>();
-  let [searchValue, setValue] = React.useState<string>();
-  // 搜索后的回调
-  const searchHandler = (currentValue: string) => {
-    if (currentValue) {
-      const relatedOptions = allOptions.filter((item) =>
-        item.value.includes(currentValue)
-      );
-      setOptions(relatedOptions);
-    }
-  };
-  // 选择后的回调
-  const selectHandler = (selectedValue: string) => {
-    if (selectedValue) {
-      router.push(selectedValue);
-      setValue(selectedValue.replace("/posts/", ""));
-    }
-  };
-  /* 搜索配置 */
-
-  return (
-    <div className="inside">
-      <h3>Search</h3>
-      <AutoComplete
-        options={options}
-        value={searchValue}
-        placeholder="Search..."
-        onSearch={searchHandler}
-        onSelect={selectHandler}
-        clearable
-        width="233px"
-        size="large"
-      />
-
-      <h3>Share</h3>
-      <div className="card">
-        <div className="icon icon0">
-          <Chrome /> <p>Copy URL</p>
-        </div>
-        <div>
-          <Button
-            auto
-            type="success"
-            onClick={() => {
-              copy(odoc.onlineSiteUrl + router.pathname);
-              setToast({ text: "URL copied", type: "success" });
-            }}
-          >
-            <ChevronsRight />
-          </Button>
-        </div>
-      </div>
-      <div className="card">
-        <div className="icon icon3">
-          <Codesandbox /> <p>QR Code</p>
-        </div>
-        <div>
-          <Tooltip
-            text={
-              <>
-                <Qrcode value={odoc.onlineSiteUrl + router.pathname} />
-              </>
-            }
-            placement="left"
-          >
-            <Button
-              auto
-              type="success"
-              onClick={() => {
-                copy(odoc.onlineSiteUrl + router.pathname);
-                setToast({ text: "URL copied", type: "success" });
-              }}
-            >
-              <ChevronsLeft />
-            </Button>
-          </Tooltip>
-        </div>
-      </div>
-      <div className="card">
-        <div className="icon icon1">
-          <Facebook /> <p>Facebook</p>
-        </div>
-        <div>
-          <a
-            href={
-              "https://www.facebook.com/sharer/sharer.php?u=" +
-              odoc.onlineSiteUrl +
-              router.pathname
-            }
-            target="_blank"
-          >
-            <Button auto type="success">
-              <ChevronsRight />
-            </Button>
-          </a>
-        </div>
-      </div>
-      <div className="card">
-        <div className="icon icon2">
-          <Twitter /> <p>Twitter</p>
-        </div>
-        <div>
-          <a
-            href={
-              "http://twitter.com/share?text=ODoc is the best&url=" +
-              odoc.onlineSiteUrl +
-              router.pathname
-            }
-            target="_blank"
-          >
-            <Button auto type="success">
-              <ChevronsRight />
-            </Button>
-          </a>
-        </div>
-      </div>
-
-      <h3>Source</h3>
-      <div className="card">
-        <div className="icon">
-          <Github /> <p>Repository</p>
-        </div>
-        <div>
-          <a
-            href={"https://github.com/" + odoc.githubRepo.name}
-            target="_blank"
-          >
-            <Button auto type="success">
-              <ChevronsRight />
-            </Button>
-          </a>
-        </div>
-      </div>
-    </div>
-  );
+interface sidebarItemsType {
+  name?: string;
+  path?: string;
+  href?: any;
+  folderName?: string;
+  folderFiles?: [];
 }
 
-export default RightSide;
+function Sidebar({ i18n }) {
+  const router = useRouter();
+  let cate: string =
+    router.pathname.split("/")[1] == "posts" &&
+    router.pathname.split("/").length >= 5
+      ? "/posts/" +
+        (odocConfig.i18nEnable
+          ? router.pathname.split("/")[2] + "/" + router.pathname.split("/")[3]
+          : router.pathname.split("/")[2])
+      : "";
+  if (cate == "") {
+    return (
+      <div className="side">
+        <p>404 Not Found</p>
+        <Button
+          auto
+          type="success-light"
+          onClick={() => {
+            router.push("/");
+          }}
+        >
+          Back to Home
+        </Button>
+      </div>
+    );
+  } else {
+    // 路由 / 分隔数组
+    const routerArray = router.pathname.split("/");
+    // 当前分类主页按钮
+    const homeRoute =
+      routerArray[1] == "posts"
+        ? odocConfig.i18nEnable
+          ? "/" + routerArray[1] + "/" + routerArray[2] + "/" + routerArray[3]
+          : "/" + routerArray[1] + "/" + routerArray[2]
+        : router.pathname;
+    return (
+      <div className="side">
+        <Link href={homeRoute}>
+          <a>
+            <h4 className={homeRoute == router.pathname ? "active" : ""}>
+              <Home />
+              {odocConfig.i18nEnable && i18n !== "default"
+                ? odocConfig.i18nLangConfig[i18n].sidebar.index
+                : "Home"}
+            </h4>
+          </a>
+        </Link>
+        {
+          // 数据对象按照路由名称为键获取数据
+          sidebarItems[cate].listContent.map(
+            (item: Readonly<sidebarItemsType>, index: string) => {
+              if (item.folderName == undefined) {
+                return (
+                  <Link href={item.path} key={"post" + index}>
+                    <a>
+                      <h4
+                        className={item.path == router.pathname ? "active" : ""}
+                      >
+                        {item.name}
+                      </h4>
+                    </a>
+                  </Link>
+                );
+              } else {
+                /* 
+                获取文件夹内文件
+                map 的每一次有且只有一次 return
+              */
+                return (
+                  <div key={"folder" + item.folderName} className="section">
+                    <h3>{item.folderName}</h3>
+                    {item.folderFiles.map(
+                      (subitem: Readonly<sidebarItemsType>, index) => {
+                        return (
+                          <Link href={subitem.path} key={"subPost" + index}>
+                            <a>
+                              <h4
+                                className={
+                                  subitem.path == router.pathname
+                                    ? "active"
+                                    : ""
+                                }
+                              >
+                                {subitem.name}
+                              </h4>
+                            </a>
+                          </Link>
+                        );
+                      }
+                    )}
+                  </div>
+                );
+              }
+            }
+          )
+        }
+      </div>
+    );
+  }
+}
+
+export default Sidebar;
