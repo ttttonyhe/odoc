@@ -40,13 +40,24 @@ Router.events.on("routeChangeError", () => {
 });
 
 // 引入 Zeit-UI React
-import { ZeitProvider, CssBaseline, Modal } from "@zeit-ui/react";
+import {
+  ZeitProvider,
+  CssBaseline,
+  Modal,
+  ButtonDropdown,
+} from "@zeit-ui/react";
+import { Globe } from "@zeit-ui/react-icons";
 
 // MDX 代码高亮
 import { MDXProvider } from "@mdx-js/react";
 
 // 通过 Prism-react-render 实现代码高亮
 import CodeBlock from "../../odoc/lib/components/codeBlock";
+
+// 导入 ODoc 全局配置文件
+import odocConfig from "../../odoc.config";
+
+// 配置代码高亮选项
 const components = {
   pre: (
     props: JSX.IntrinsicAttributes &
@@ -56,11 +67,13 @@ const components = {
   code: CodeBlock,
 };
 
+// 函数组件
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   // Modal 组件关闭开启状态，用于手机端展示 sidebar
   const [state, setState] = React.useState(false);
+  let [langNow, setLang] = React.useState<any>(odocConfig.i18nConfig.default);
   const handler = () => setState(true);
   const closeHandler = () => {
     setState(false);
@@ -69,36 +82,90 @@ function MyApp({ Component, pageProps }: AppProps) {
   // 网页标题获取
   let title: string;
   if (router.pathname == "/") {
-    title = "ODoc - One-click-away Documentation";
+    // 全站主页
+    title = `${odocConfig.siteName} - ${odocConfig.siteDes}`;
   } else if (router.pathname.split("/").length == 3) {
+    // 分类主页
     title = router.pathname.split("/")[2];
   } else if (router.pathname.split("/").length >= 4) {
+    // 按 / 分隔长度大于 4 的地址取最后一项为标题
     title = router.pathname.split("/")[router.pathname.split("/").length - 1];
   }
+
   return (
     <ZeitProvider>
       <Head>
         <title>{title}</title>
+        <meta name="description" content={odocConfig.siteDes} />
+        <meta name="keywords" content={odocConfig.siteKeywords} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <CssBaseline />
-      <Header />
-      {router.pathname !== "/" ? (
-        <div onClick={handler} className="mobile-side">
-          <p>Click to view Index</p>
-        </div>
-      ) : (
-        ""
-      )}
+      {
+        /* 
+        i18n 开启判断，开启时展示语言切换按钮
+        ButtonDropdown.Item 带 main 属性为默认展示
+        切换语言时路由回到主页以完善体验
+      */
+        odocConfig.i18nEnable ? (
+          <ButtonDropdown size="mini" auto className="lang">
+            <ButtonDropdown.Item
+              main
+              onClick={() => {
+                setLang(langNow);
+                router.push("/");
+              }}
+            >
+              <Globe /> {langNow}
+            </ButtonDropdown.Item>
+            {odocConfig.i18nLangs.map((item, key) => {
+              return (
+                <ButtonDropdown.Item
+                  onClick={() => {
+                    setLang(item);
+                    router.push("/");
+                  }}
+                  key={"lang" + key}
+                >
+                  {item}
+                </ButtonDropdown.Item>
+              );
+            })}
+          </ButtonDropdown>
+        ) : (
+          ""
+        )
+      }
+      <Header i18n={langNow} />
+      {
+        /* 
+        非主页页面手机端展示「点击查看目录」的按钮
+        以激活下方 Modal 展示 sidebar 组件
+      */
+        router.pathname !== "/" ? (
+          <div onClick={handler} className="mobile-side">
+            <p>
+              {odocConfig.i18nEnable && langNow !== "default"
+                ? odocConfig.i18nLangConfig[langNow].sidebar.mobileIndex
+                : "Click to view Index"}
+            </p>
+          </div>
+        ) : (
+          ""
+        )
+      }
       <Modal open={state} onClose={closeHandler}>
         <Modal.Content>
           <div onClick={closeHandler}>
-            <Sidebar />
+            <Sidebar i18n={langNow} />
           </div>
         </Modal.Content>
       </Modal>
       <div className="main markdown-body">
-        {router.pathname !== "/" ? <Sidebar /> : ""}
+        {
+          // 主页不展示 Sidebar
+          router.pathname !== "/" ? <Sidebar i18n={langNow} /> : ""
+        }
         <div className={router.pathname !== "/" ? "view" : "view home"}>
           <div className="center">
             <div className="content">
@@ -107,10 +174,10 @@ function MyApp({ Component, pageProps }: AppProps) {
               </MDXProvider>
             </div>
             <div className="aside">
-              <RightSide />
+              <RightSide i18n={langNow} />
             </div>
           </div>
-          <Footer />
+          <Footer i18n={langNow} />
         </div>
       </div>
     </ZeitProvider>

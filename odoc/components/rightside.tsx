@@ -33,7 +33,7 @@ import searchIndex from "../../src/data/searchindex.json";
 // 二维码生成依赖
 import Qrcode from "qrcode.react";
 
-function RightSide() {
+function RightSide({ i18n }) {
   const router = useRouter();
 
   // 剪贴板访问
@@ -70,11 +70,19 @@ function RightSide() {
 
   return (
     <div className="inside">
-      <h3>Search</h3>
+      <h3>
+        {odoc.i18nEnable && i18n !== "default"
+          ? odoc.i18nLangConfig[i18n].sidebar.search.title
+          : "Search"}
+      </h3>
       <AutoComplete
         options={options}
         value={searchValue}
-        placeholder="Search..."
+        placeholder={
+          odoc.i18nEnable && i18n !== "default"
+            ? odoc.i18nLangConfig[i18n].sidebar.search.placeholder
+            : "Search..."
+        }
         onSearch={searchHandler}
         onSelect={selectHandler}
         clearable
@@ -82,10 +90,19 @@ function RightSide() {
         size="large"
       />
 
-      <h3>Share</h3>
+      <h3>
+        {odoc.i18nEnable && i18n !== "default"
+          ? odoc.i18nLangConfig[i18n].sidebar.share.title
+          : "Share"}
+      </h3>
       <div className="card">
         <div className="icon icon0">
-          <Chrome /> <p>Copy URL</p>
+          <Chrome />{" "}
+          <p>
+            {odoc.i18nEnable && i18n !== "default"
+              ? odoc.i18nLangConfig[i18n].sidebar.share.url
+              : "Copy URL"}
+          </p>
         </div>
         <div>
           <Button
@@ -102,7 +119,12 @@ function RightSide() {
       </div>
       <div className="card">
         <div className="icon icon3">
-          <Codesandbox /> <p>QR Code</p>
+          <Codesandbox />{" "}
+          <p>
+            {odoc.i18nEnable && i18n !== "default"
+              ? odoc.i18nLangConfig[i18n].sidebar.share.qr
+              : "QR Code"}
+          </p>
         </div>
         <div>
           <Tooltip
@@ -113,14 +135,7 @@ function RightSide() {
             }
             placement="left"
           >
-            <Button
-              auto
-              type="success"
-              onClick={() => {
-                copy(odoc.onlineSiteUrl + router.pathname);
-                setToast({ text: "URL copied", type: "success" });
-              }}
-            >
+            <Button auto type="success" className="qrcode">
               <ChevronsLeft />
             </Button>
           </Tooltip>
@@ -128,7 +143,12 @@ function RightSide() {
       </div>
       <div className="card">
         <div className="icon icon1">
-          <Facebook /> <p>Facebook</p>
+          <Facebook />{" "}
+          <p>
+            {odoc.i18nEnable && i18n !== "default"
+              ? odoc.i18nLangConfig[i18n].sidebar.share.fb
+              : "Facebook"}
+          </p>
         </div>
         <div>
           <a
@@ -147,7 +167,12 @@ function RightSide() {
       </div>
       <div className="card">
         <div className="icon icon2">
-          <Twitter /> <p>Twitter</p>
+          <Twitter />{" "}
+          <p>
+            {odoc.i18nEnable && i18n !== "default"
+              ? odoc.i18nLangConfig[i18n].sidebar.share.tw
+              : "Twitter"}
+          </p>
         </div>
         <div>
           <a
@@ -165,10 +190,19 @@ function RightSide() {
         </div>
       </div>
 
-      <h3>Source</h3>
+      <h3>
+        {odoc.i18nEnable && i18n !== "default"
+          ? odoc.i18nLangConfig[i18n].sidebar.source.title
+          : "Source"}
+      </h3>
       <div className="card">
         <div className="icon">
-          <Github /> <p>Repository</p>
+          <Github />{" "}
+          <p>
+            {odoc.i18nEnable && i18n !== "default"
+              ? odoc.i18nLangConfig[i18n].sidebar.source.repo
+              : "Repository"}
+          </p>
         </div>
         <div>
           <a
