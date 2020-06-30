@@ -54,7 +54,7 @@ const execa = require("execa");
     new Listr([{
             title: 'Basic structure generation',
             task: async () => {
-                await odocRepo('HelipengTony/odoc', '.', 'example')
+                await odocRepo('HelipengTony/odoc', './test', 'example')
             }
         },
         {
