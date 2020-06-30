@@ -24,7 +24,8 @@ interface sidebarItemsType {
 function Sidebar({ i18n }) {
   const router = useRouter();
   let cate: string =
-    router.pathname.split("/")[1] == "posts"
+    router.pathname.split("/")[1] == "posts" &&
+    router.pathname.split("/").length >= 5
       ? "/posts/" +
         (odocConfig.i18nEnable
           ? router.pathname.split("/")[2] + "/" + router.pathname.split("/")[3]
