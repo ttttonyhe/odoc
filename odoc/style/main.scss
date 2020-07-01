@@ -1,6 +1,9 @@
 .lang {
   position: absolute !important;
-  right: 205px;
+  right: 10px;
+  @media screen and (min-width: 48em) {
+    right: 205px;
+  }
   top: 9.45px;
   transform: translateY(-0.5px) scale(0.95, 0.88);
   z-index: 99999;
@@ -61,6 +64,12 @@
     }
     &.active {
       font-weight: 500;
+    }
+  }
+  .i18nTabs {
+    max-width: 50% !important;
+    @media screen and (min-width: 48em) {
+      max-width: 100% !important;
     }
   }
   .tabs {
