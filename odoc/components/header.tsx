@@ -38,6 +38,7 @@ function Header({ i18n }) {
         onChange={(path) => {
           router.push(path);
         }}
+        className={odoc.i18nEnable ? "i18nTabs" : ""}
       >
         <Tabs.Item label="Home" value="/"></Tabs.Item>
         {menuItems.map((item: any, index) => {
