@@ -1,13 +1,15 @@
 {
-  "name": "math-to-cs",
-  "version": "0.1.0",
+  "name": "odoc",
+  "version": "0.1.1",
   "private": true,
+  "license": "SEE LICENSE IN LICENSE",
   "scripts": {
     "dev": "cd odoc && cd generators && node setup.js && cd ../../ && next dev",
     "build": "cd odoc && cd generators && node setup.js && cd ../../ && next build",
-    "start": "cd odoc && cd generators && node setup.js && cd ../../ && next start"
+    "start": "cd odoc && cd generators && node setup.js && cd ../../ && next start",
+    "generation": "cd odoc && cd generators && node setup.js && cd ../../"
   },
-  "dependencies": {
+  "devDependencies": {
     "@mdx-js/loader": "^1.6.6",
     "@mdx-js/react": "^1.6.6",
     "@next/mdx": "^9.4.4",
@@ -23,9 +25,7 @@
     "qrcode.react": "^1.0.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "sass": "^1.26.9"
-  },
-  "devDependencies": {
+    "sass": "^1.26.9",
     "@types/node": "^14.0.14",
     "@types/nprogress": "^0.2.0",
     "@types/react": "^16.9.38",
