@@ -42,6 +42,15 @@ npm create odoc-site / yarn create odoc-site
 git clone -b example git@github.com:HelipengTony/odoc.git
 yarn install / npm install
 ```
+ODoc 同时支持 i18n 国际化，你可以在 odoc.config.js 中进行语言内容配置和功能开启。需要注意的是开启 i18n 功能后必须指定语言对应的文档内容目录，详情可参照 example。
+
+<br/>
+
+## Notice 必须注意
+在任何一次部署之前，请执行以下命令进行引索生成：
+```bash
+yarn run generation / npm run generation
+```
 
 <br/>
 
@@ -77,6 +86,13 @@ yarn install / npm install
 // Development
 yarn run dev / npm run dev
 ```
+在任何一次正式部署之前，必须执行以下命令建立引索：
+```bash
+yarn run generation / npm run generation
+```
+
+ODoc 同时支持 i18n 国际化，你可以在 odoc.config.js 中进行语言内容配置和功能开启。需要注意的是开启 i18n 功能后必须指定语言对应的文档内容目录，详情可参照 example。
+
 部署到开发环境：
 ```bash
 // Production
