@@ -81,7 +81,7 @@ function Sidebar({ i18n }) {
                       <h4
                         className={item.path == router.pathname ? "active" : ""}
                       >
-                        {item.name}
+                        {item.name.substring(2)}
                       </h4>
                     </a>
                   </Link>
@@ -93,7 +93,7 @@ function Sidebar({ i18n }) {
               */
                 return (
                   <div key={"folder" + item.folderName} className="section">
-                    <h3>{item.folderName}</h3>
+                    <h3>{item.folderName.substring(2)}</h3>
                     {item.folderFiles.map(
                       (subitem: Readonly<sidebarItemsType>, index) => {
                         return (
@@ -106,7 +106,7 @@ function Sidebar({ i18n }) {
                                     : ""
                                 }
                               >
-                                {subitem.name}
+                                {subitem.name.substring(2)}
                               </h4>
                             </a>
                           </Link>

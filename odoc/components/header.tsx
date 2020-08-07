@@ -27,7 +27,12 @@ function Header({ i18n }) {
     */
   return (
     <header className="header">
-      <div className="logo">
+      <div
+        className="logo"
+        onClick={() => {
+          router.push("/");
+        }}
+      >
         <Book />
         <span>{odoc.siteName}</span>
       </div>
@@ -53,7 +58,9 @@ function Header({ i18n }) {
               }
               return (
                 <Tabs.Item
-                  label={item.catePath.replace(i18nReplace + "/", "")}
+                  label={item.catePath
+                    .replace(i18nReplace + "/", "")
+                    .substring(2)}
                   value={item.catePath}
                   key={"menu" + index}
                 ></Tabs.Item>
@@ -62,7 +69,7 @@ function Header({ i18n }) {
           } else {
             return (
               <Tabs.Item
-                label={item.cateName}
+                label={item.cateName.substring(2)}
                 value={item.catePath}
                 key={"menu" + index}
               ></Tabs.Item>
