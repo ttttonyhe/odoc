@@ -20,6 +20,8 @@
 
 <br/>
 
+> This project is WIP, See documentation at [docs.ouorz.com](https://docs.ouorz.com)
+
 <br/>
 
 ODoc 是一个支持**热加载/预览**、一键**生产环境**部署，基于 [MDX](https://mdxjs.com) 文件生成路由的文档站点生成引擎。基于 [Next.js](https://www.nextjs.cn) 开发并支持框架提供的全部特性，插件、热预览、静态站点生成等。
