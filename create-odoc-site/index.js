@@ -76,7 +76,7 @@ const execa = require("execa");
                         },
                         siteDes: "${siteInfo.siteDes}",
                         siteKeywords: "${siteInfo.siteKeywords}",
-                        i18nEnable: "${siteInfo.siteI18n}",
+                        i18nEnable: ${siteInfo.siteI18n},
                         i18nConfig: {
                             "default": "English",
                             "English": "/posts/en",
