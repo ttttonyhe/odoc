@@ -4,8 +4,9 @@
 // NOTE: 不通过 next/link 改变路由路径
 import React from "react";
 import { useRouter } from "next/router";
-import { Tabs, Button, ButtonDropdown } from "@zeit-ui/react";
-import { Book, Github, FileText, Coffee } from "@zeit-ui/react-icons";
+import { Tabs } from "@zeit-ui/react";
+import { Button } from "@geist-ui/react";
+import { Book, Github, FileText, Coffee } from "@geist-ui/react-icons";
 
 // 读取全局配置
 import odoc from "../../odoc.config";
@@ -62,7 +63,7 @@ function Header({ i18n }) {
                     .replace(i18nReplace + "/", "")
                     .substring(2)}
                   value={item.catePath}
-                  key={"menu" + index}
+                  key={item.catePath}
                 ></Tabs.Item>
               );
             }
@@ -84,7 +85,7 @@ function Header({ i18n }) {
             ""
           ) : (
             <a href="https://www.ouorz.com" target="_blank">
-              <Button size="mini" auto>
+              <Button scale={0.25} auto>
                 <FileText />
                 ODoc Author
               </Button>
@@ -92,13 +93,13 @@ function Header({ i18n }) {
           )
         }
         <a href="https://github.com/HelipengTony" target="_blank">
-          <Button size="mini" auto>
+          <Button scale={0.25} auto>
             <Github />
             ODoc
           </Button>
         </a>
         <a href="https://www.ouorz.com/donation" target="_blank">
-          <Button size="mini" auto type="warning" ghost>
+          <Button scale={0.25} auto type="warning" ghost>
             <Coffee />
             Donation
           </Button>

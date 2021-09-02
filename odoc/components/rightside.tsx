@@ -15,14 +15,14 @@ import {
   Twitter,
   Codesandbox,
   ChevronsLeft,
-} from "@zeit-ui/react-icons";
+} from "@geist-ui/react-icons";
 import {
   Button,
   AutoComplete,
   useClipboard,
   useToasts,
   Tooltip,
-} from "@zeit-ui/react";
+} from "@geist-ui/react";
 
 // 获取全局配置
 import odoc from "../../odoc.config";
@@ -87,7 +87,6 @@ function RightSide({ i18n }) {
         onSelect={selectHandler}
         clearable
         width="233px"
-        size="large"
       />
 
       <h3>

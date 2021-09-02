@@ -4,8 +4,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import { Home } from "@zeit-ui/react-icons";
-import { Button } from "@zeit-ui/react";
+import { Home } from "@geist-ui/react-icons";
+import { Button } from "@geist-ui/react";
 
 // 获取已生成的左边栏数据
 import sidebarItems from "../../src/data/sidebaritems.json";

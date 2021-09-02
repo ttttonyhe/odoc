@@ -39,14 +39,14 @@ Router.events.on("routeChangeError", () => {
   NProgress.done();
 });
 
-// 引入 Zeit-UI React
+// 引入 Geist-UI React
 import {
-  ZeitProvider,
+  GeistProvider,
   CssBaseline,
   Modal,
   ButtonDropdown,
-} from "@zeit-ui/react";
-import { Globe } from "@zeit-ui/react-icons";
+} from "@geist-ui/react";
+import { Globe } from "@geist-ui/react-icons";
 
 // MDX 代码高亮
 import { MDXProvider } from "@mdx-js/react";
@@ -93,7 +93,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   }
 
   return (
-    <ZeitProvider>
+    <GeistProvider>
       <Head>
         <title>{title}</title>
         <meta name="description" content={odocConfig.siteDes} />
@@ -108,7 +108,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         切换语言时路由回到主页以完善体验
       */
         odocConfig.i18nEnable ? (
-          <ButtonDropdown size="mini" auto className="lang">
+          <ButtonDropdown scale={0.5} auto className="lang">
             <ButtonDropdown.Item
               main
               onClick={() => {
@@ -154,7 +154,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           ""
         )
       }
-      <Modal open={state} onClose={closeHandler}>
+      <Modal visible={state} onClose={closeHandler}>
         <Modal.Content>
           <div onClick={closeHandler}>
             <Sidebar i18n={langNow} />
@@ -180,7 +180,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Footer i18n={langNow} />
         </div>
       </div>
-    </ZeitProvider>
+    </GeistProvider>
   );
 }
 

@@ -4,7 +4,7 @@
 
 import React from "react";
 import axios from "axios";
-import { Link } from "@zeit-ui/react";
+import { Link } from "@geist-ui/react";
 import { withRouter } from "next/router";
 
 // 获取全局配置

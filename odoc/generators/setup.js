@@ -42,5 +42,14 @@ new Listr([{
         },
       ])
     },
+  },
+  {
+    title: 'ODoc post-generation cleanup',
+    task: () => {
+      return new Listr([{
+        title: 'cleaning...',
+        task: () => execa('rm', ['menu.js', 'search.js', 'sidebar.js'])
+      }, ])
+    },
   }
 ]).run();
