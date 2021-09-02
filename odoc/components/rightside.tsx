@@ -33,7 +33,7 @@ import searchIndex from "../../src/data/searchindex.json";
 // 二维码生成依赖
 import Qrcode from "qrcode.react";
 
-function RightSide({ i18n }) {
+const RightSide = ({ i18n }) => {
   const router = useRouter();
 
   // 剪贴板访问
@@ -216,6 +216,6 @@ function RightSide({ i18n }) {
       </div>
     </div>
   );
-}
+};
 
 export default RightSide;

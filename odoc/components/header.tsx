@@ -14,7 +14,7 @@ import odoc from "../../odoc.config";
 // 获取已生成的菜单数据
 import menuItems from "../../src/data/menuitems.json";
 
-function Header({ i18n }) {
+const Header = ({ i18n }) => {
   const router = useRouter();
   let routerArray = router.pathname.split("/");
   let currentRoute =
