@@ -21,7 +21,7 @@ interface sidebarItemsType {
   folderFiles?: [];
 }
 
-function Sidebar({ i18n }) {
+const Sidebar = ({ i18n }) => {
   const router = useRouter();
   let cate: string =
     router.pathname.split("/")[1] == "posts"
@@ -122,6 +122,6 @@ function Sidebar({ i18n }) {
       </div>
     );
   }
-}
+};
 
 export default Sidebar;
