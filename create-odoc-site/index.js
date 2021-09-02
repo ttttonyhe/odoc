@@ -137,10 +137,10 @@ const execa = require("execa");
                     if (err) {
                         console.error('Generation failed');
                     } else {
-                        if (siteInfo.siteI18n) {
+                        if (siteInfo.siteI18n === "true") {
                             console.log("You have enabled i18n, please edit 'odoc.config.js' to customize translation");
                         }
-                        console.log("ODoc setup has completed. Please wait...");
+                        console.log("Cleaning up, please wait...");
                         return;
                     }
                 });

@@ -42,12 +42,12 @@ let findJsonFile = (path: string): [] => {
       // 获取文件名称
       let fileName = fPath
         .split("/")
-      [fPath.split("/").length - 1].replace(/\.mdx+$/g, "");
+        [fPath.split("/").length - 1].replace(/\.mdx+$/g, "");
       // 判断是否为隐藏文件 (开头是否为 .)
       if (fileName.charAt(0) !== "." && fileName !== "index") {
         // 增加至 filesArray 数组
         filesArray.push({
-          label: fileName.split(".")[1],
+          label: fileName,
           value: fPath.replace(filesExcludePath, "").replace(/\.mdx+$/g, ""),
         });
       }

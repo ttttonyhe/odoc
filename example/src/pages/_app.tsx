@@ -39,7 +39,7 @@ Router.events.on("routeChangeError", () => {
   NProgress.done();
 });
 
-// 引入 Geist-UI React
+// 引入 Zeit-UI React
 import {
   GeistProvider,
   CssBaseline,
@@ -108,7 +108,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         切换语言时路由回到主页以完善体验
       */
         odocConfig.i18nEnable ? (
-          <ButtonDropdown scale={0.5} auto className="lang">
+          <ButtonDropdown scale={0.25} auto className="lang">
             <ButtonDropdown.Item
               main
               onClick={() => {

@@ -10,7 +10,6 @@
   button {
     transform: scale(1, 1.05);
     font-weight: 500;
-    font-size: 13px !important;
     svg {
       width: 12px;
       height: 12px;
@@ -101,12 +100,9 @@
         margin-right: 0px;
       }
       svg {
-        width: 12px;
-        height: 12px;
-        margin-right: 3px;
-      }
-      .text {
-        font-size: 13px;
+        width: 15px;
+        height: 15px;
+        margin-right: 2px;
       }
     }
   }
@@ -136,8 +132,8 @@
         overflow: hidden;
         transition: ease-in-out 0.1s;
         svg {
-          width: 15px;
-          height: 15px;
+          width: 16px;
+          height: 16px;
           vertical-align: text-top;
           margin: 1.5px 5px 0px 0px;
         }
@@ -408,13 +404,6 @@
       border-radius: 5px;
       color: #555;
       letter-spacing: 0.5px;
-      display: flex;
-      align-items: center;
-      svg {
-        width: 15px;
-        height: 15px;
-        margin-right: 3px;
-      }
     }
     h3 {
       font-weight: 600;
