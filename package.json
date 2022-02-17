@@ -21,7 +21,7 @@
     "execa": "^5.1.1",
     "github-markdown-css": "^4.0.0",
     "listr": "^0.14.3",
-    "next": "11.1.2",
+    "next": "12.1.0",
     "nprogress": "^0.2.0",
     "prism-react-renderer": "^1.2.1",
     "qrcode.react": "^1.0.1",
