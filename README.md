@@ -20,7 +20,7 @@
 
 <br/>
 
-> This project is WIP, See documentation at [docs.ouorz.com](https://docs.ouorz.com)
+> This project is not actively maintained, see documentation at [docs.ouorz.com](https://docs.ouorz.com)
 
 <br/>
 
